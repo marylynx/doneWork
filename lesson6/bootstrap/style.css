@@ -1,0 +1,18 @@
+#first{
+	height: 100px;
+	width: 150px;
+	background: blue;
+}
+
+#second{
+	height: 100px;
+	width: 150px;
+	background: red;
+	position: absolute;
+	top: -10px;
+	opacity: 0.5;
+}
+
+container{
+	background-color: blue;
+}

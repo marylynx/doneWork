@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--<link type="text/css" rel="stylesheet" href="stylesheet.css"></link>-->
+		<style>
+			caption {
+				caption-side: bottom;
+			}
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<form action="somescript.php" >
+			<label for="here">Your Name</label>
+			<input name="yourName" id="yourName">
+			
+			<fieldset>
+				<legend>Name</legend>
+				<p>First name <input name="firstName"></p>
+				<p>Last name <input name="lastName"></p>
+			</fieldset>
+			<fieldset>
+				<legend>Address</legend>
+				<p>Address <textarea name="address"></textarea></p>
+				<p>Postal code <input name="postcode"></p>
+			</fieldset>
+		</form>
+		<input name="yourName1" id="here">
+		<select name="country">
+			<optgroup label="Africa">
+				<option value="gam">Gambia</option>
+				<option value="mad">Madagascar</option>
+				<option value="nam">Namibia</option>
+			</optgroup>
+			<optgroup label="Europe">
+				<option value="fra">France</option>
+				<option value="rus">Russia</option>
+				<option value="uk">UK</option>
+			</optgroup>
+			<optgroup label="North America">
+				<option value="can">Canada</option>
+				<option value="mex">Mexico</option>
+				<option value="usa">USA</option>
+			</optgroup>
+		</select>
+	</body>
+</html>

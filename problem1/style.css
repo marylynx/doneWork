@@ -1,0 +1,9 @@
+.container{
+    float: right;
+    border: 1px solid black;
+}
+.container div {
+    float: left;
+    margin: 10px;
+    border: 1px dashed blue;
+}

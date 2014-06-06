@@ -1,0 +1,35 @@
+#first{
+	height: 100px;
+	width: 150px;
+	background: blue;
+}
+
+#second{
+	height: 100px;
+	width: 150px;
+	background: red;
+	position: absolute;
+	top: -10px;
+	opacity: 0.5;
+}
+
+.size{
+	width: 250px;
+	height: 200px;
+	margin-left: 10px;
+}
+
+.panel-head-size{
+	width: 248px;
+	height: 80px;
+}
+
+@media print {
+  * {
+    color: #000 !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  
+  
