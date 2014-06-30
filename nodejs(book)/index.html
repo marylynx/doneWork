@@ -1,0 +1,30 @@
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+  <script>
+	var counter = 0;
+	var poll = function() {
+	  $.getJSON('/poll/'+counter, function(response) {
+		 counter = response.count;
+		 var elem = $('#output');
+		 elem.text(elem.text() + response.append);
+		 poll();
+	  });
+	}
+	poll();
+	
+	$(document).ready(function(){
+	   $('#btn').click(function(){
+		 $.get('/msg/'+$('#message').val());
+		 $('#message').val('');
+	   });
+	 });
+  </script>
+</head>
+<body>
+ <textarea id="output" style="width: 90%; height: 90%;">
+ </textarea>
+ <input type="text" id = "message" />
+ <button id = "btn">Send</button>
+</body>
+</html>
