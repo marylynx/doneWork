@@ -54,17 +54,4 @@ if(map[ext]) {
 */
 
 
-// HTTPS
-var https = require('https');
-// read in the private key and certificate
-var pk = fs.readFileSync('./privatekey.pem');
-var pc = fs.readFileSync('./certificate.pem');
-var opts = { key: pk, cert: pc };
-// create the secure server
-var serv = https.createServer(opts, function(req, res) {
-  console.log(req);
-  res.end();
-});
-// listen on port 443
-serv.listen(443, '0.0.0.0');
 
