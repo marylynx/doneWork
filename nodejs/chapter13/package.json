@@ -1,0 +1,10 @@
+{
+  "name": "siosample",
+  "description": "Simple Socket.io app",
+  "version": "0.0.1",
+  "main": "chapter13.js",
+  "dependencies": {
+    "socket.io": "*"
+  },
+  "private": "true"
+}
