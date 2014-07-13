@@ -1,51 +1,22 @@
-var util = require('util');
+var Login = require('./login.js');
  
-function Login(username, password) {
-    function _checkForErrors(error, rows, reason) {
-		if (error) {
-			this.emit('error', error);
-			return true;
-		}
-		 
-		if (rows.length &lt; 1) {
-			this.emit('failure', reason);
-			return true;
-		}
-		 
-		return false;
-	}
-     
-    function _checkUsername(error, rows) {
-		if (_checkForErrors(error, rows, 'username')) {
-			return false;
-		} else {
-			sql.query('SELECT 1 FROM users WHERE name = ? && password = MD5(?);', [ username, password ], _checkPassword);
-		}
-	}
-     
-    function _checkPassword(error, rows) {
-		if (_checkForErrors(error, rows, 'password')) {
-			return false;
-		} else {
-			sql.query('SELECT * FROM userdata WHERE name = ?;', [ username ], _getData);
-		}
-	}
-     
-    function _getData(error, rows) {
-		if (_checkForErrors(error, rows)) {
-			return false;
-		} else {
-			this.emit('success', rows[0]);
-		}
-	}
-     
-    function perform() {
-		sql.query('SELECT 1 FROM users WHERE name = ?;', [ username ], _checkUsername);
-	}
-     
-    this.perform = perform;
-}
- 
-util.inherits(Login, EventEmitter);
-
-module.exports = Login;
+app.get('/login', function (req, res) {
+    var login = new Login(req.param('username'), req.param('password'));
+    login.on('error', function (error) {
+        res.writeHead(500);
+        res.end();
+    });
+    login.on('failure', function (reason) {
+        if (reason == 'username') {
+            res.end('Wrong username!');
+        } else if (reason == 'password') {
+            res.end('Wrong password!');
+        }
+    });
+    login.on('success', function (data) {
+        req.session.username = req.param('username');
+        req.session.data = data;
+        res.redirect('/userarea');
+    });
+    login.perform();
+});
